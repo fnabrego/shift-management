@@ -16,9 +16,10 @@ import { SpecialtyModule } from './specialty/specialty.module';
 import { PlaceOfCareModule } from './place-of-care/place-of-care.module';
 import { HealthcareModule } from './healthcare/healthcare.module';
 import { UserModule } from './user/user.module';
+import { MailsModule } from './mails/mails.module';
 
 @Module({
-  imports: [PatientModule, ProfessionalModule, ScheduleModule, StudiesModule, StoriesModule, TimeSlotModule, StateModule, CityModule, SpecialtyModule, PlaceOfCareModule, HealthcareModule, UserModule],
+  imports: [PatientModule, ProfessionalModule, ScheduleModule, StudiesModule, StoriesModule, TimeSlotModule, StateModule, CityModule, SpecialtyModule, PlaceOfCareModule, HealthcareModule, UserModule, MailsModule],
   controllers: [AppController, TimeSlotController],
   providers: [AppService, ProfessionalService, TimeSlotService],
 })
