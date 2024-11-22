@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { PatientModule } from './patient/patient.module';
 import { ProfessionalService } from './professional/professional.service';
 import { ProfessionalModule } from './professional/professional.module';
-import { ScheduleModule } from './schedule/schedule.module';
+import { AppointmentModule } from './appointment/appointment.module';
 import { StudiesModule } from './studies/studies.module';
 import { StoriesModule } from './stories/stories.module';
 import { TimeSlotService } from './time-slot/time-slot.service';
@@ -15,11 +15,10 @@ import { CityModule } from './city/city.module';
 import { SpecialtyModule } from './specialty/specialty.module';
 import { PlaceOfCareModule } from './place-of-care/place-of-care.module';
 import { HealthcareModule } from './healthcare/healthcare.module';
-import { UserModule } from './user/user.module';
 import { MailsModule } from './mails/mails.module';
 
 @Module({
-  imports: [PatientModule, ProfessionalModule, ScheduleModule, StudiesModule, StoriesModule, TimeSlotModule, StateModule, CityModule, SpecialtyModule, PlaceOfCareModule, HealthcareModule, UserModule, MailsModule],
+  imports: [PatientModule, ProfessionalModule, AppointmentModule, StudiesModule, StoriesModule, TimeSlotModule, StateModule, CityModule, SpecialtyModule, PlaceOfCareModule, HealthcareModule, MailsModule],
   controllers: [AppController, TimeSlotController],
   providers: [AppService, ProfessionalService, TimeSlotService],
 })
