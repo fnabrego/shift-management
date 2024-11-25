@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export type HealthcaresDocument = HydratedDocument<Healthcare>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Healthcare {
 
     @Prop({ default: uuidv4 })

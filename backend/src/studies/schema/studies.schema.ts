@@ -1,11 +1,13 @@
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Date, HydratedDocument } from 'mongoose';
+import mongoose, { Date, HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
+import { Patient } from '../../patient/schema/patient.schema';
+import { Professional } from '../../professional/schema/professional.schema';
 
 export type StudiesDocument = HydratedDocument<Study>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Study {
 
     @Prop({ default: uuidv4 })
@@ -17,22 +19,19 @@ export class Study {
     @Prop({ required: true })
     information: string;
 
-    @Prop({ required: true }) // {type: mongoose.Schema.Types.ObjectID, ref:'Specialty'}
-    specialty: string;  //! tabla de specialty
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Patient' })
+    patient_id: Patient;
 
-    @Prop() // {type: mongoose.Schema.Types.ObjectID, ref:'PlaceOfCare'}
-    placeOfCare: string;    //! tabla de placeOfCare
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Professional' })
+    professional_id: Professional;
 
-    @Prop() //{ type: mongoose.Schema.Types.ObjectId, ref: 'Healthcares' }
-    healthcare: string; //! tabla de healthcare
-
-    @Prop()
-    plan: string;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'PlaceOfCare' })
+    placeOfCare: string;
 
     @Prop()
-    nJoined: string;
+    url: string[]
 
-    @Prop({ default: false })
+    @Prop({ default: false, select: false })
     isDeleted: boolean;
 
 }

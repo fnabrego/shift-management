@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export type StatesDocument = HydratedDocument<State>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class State {
 
     @Prop({ default: uuidv4 })
@@ -13,9 +13,6 @@ export class State {
 
     @Prop({ required: true })
     name: string;
-
-    @Prop({ required: true })   //{ type: mongoose.Schema.Types.ObjectId, ref: 'Cities' }
-    cities: string[];   //! tabla de cities
 
 }
 

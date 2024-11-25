@@ -1,11 +1,17 @@
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Date, HydratedDocument } from 'mongoose';
+import mongoose, { Date, HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
+import { State } from '../../state/schema/state.schema';
+import { City } from '../../city/schema/city.schema';
+import { Healthcare } from '../../healthcare/schema/healthcare.schema';
+import { Appointment } from '../../appointment/schema/appointment.schema';
+import { Role } from '../../roles/roles.enum';
+import { Story } from '../../stories/schema/stories.schema';
 
 export type PatientDocument = HydratedDocument<Patient>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Patient {
 
     @Prop({ default: uuidv4 })
@@ -14,17 +20,14 @@ export class Patient {
     @Prop({ required: true })
     firstName: string;
 
-    @Prop()
+    @Prop({ required: false })
     secondName: string;
 
     @Prop({ required: true })
     lastName: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, maxlength: 8, minlength: 7 })
     dni: number;
-    
-    @Prop({ required: true })
-    age: number;
 
     @Prop({ required: true })
     birthdate: Date;
@@ -32,31 +35,34 @@ export class Patient {
     @Prop({ required: true })
     mail: string;
 
-    @Prop({ required: true }) //{ type: mongoose.Schema.Types.ObjectId, ref: 'States' }
-    state: string;  //! tabla de states
+    @Prop({ required: true, select: false })
+    password: string;
 
-    @Prop({ required: true })   //{ type: mongoose.Schema.Types.ObjectId, ref: 'Cities' }
-    city: string;   //! tabla de cities
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'State' })
+    state: State;
 
-    @Prop() //{ type: mongoose.Schema.Types.ObjectId, ref: 'Healthcares' }
-    healthcare: string; //! tabla de healthcare
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'City' })
+    city: City;
+
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Healthcare' })
+    healthcare: Healthcare;
 
     @Prop()
-    nJoined: string;
+    num_joined: string;
 
     @Prop()
     plan: string;
 
-    @Prop() //{ type: mongoose.Schema.Types.ObjectId, ref: 'Appointments' }
-    appointments: string; //! tabla de appointments
+    @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Appointment' })
+    appointments: Appointment[];
 
-    @Prop({ required: true })
-    role: string;   //! enum de roles
+    @Prop({ required: true, enum: Role, default: 'patient' })
+    role: Role;
 
-    @Prop() //{ type: mongoose.Schema.Types.ObjectId, ref: 'Stories' }
-    stories: string;    //! tabla de stories
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Stories' })
+    stories: Story[];
 
-    @Prop({ default: false })
+    @Prop({ default: false, select: false })
     isDeleted: boolean;
 
 }
