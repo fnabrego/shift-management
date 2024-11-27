@@ -67,6 +67,9 @@ export class Professional {
     @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Story' })
     stories: Story[];
 
+    @Prop()
+    profile_picture: string;
+
     @Prop({ required: true, enum: Role, default: 'professional' })
     role: Role;
 

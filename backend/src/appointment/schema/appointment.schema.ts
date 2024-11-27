@@ -5,6 +5,7 @@ import { Patient } from '../../patient/schema/patient.schema';
 import { Professional } from '../../professional/schema/professional.schema';
 import { Schedule } from '../../schedule/schema/schedule.schema';
 import { Status } from '../enum/status.enum';
+import { TimeSlot } from '../../time-slot/schema/time-slot.schema';
 
 export type AppointmentsDocument = HydratedDocument<Appointment>;
 
@@ -26,8 +27,8 @@ export class Appointment {
     @Prop({ required: true })
     date: Date;
 
-    @Prop({ required: true })
-    time_slot: string;
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'TimeSlot' })
+    time_slot: TimeSlot;
 
     @Prop({ required: true, enum: Object.values(Status), default: 'Schedule' })
     status: Status;

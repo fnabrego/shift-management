@@ -18,13 +18,13 @@ export class Patient {
     _id: string;
 
     @Prop({ required: true })
-    firstName: string;
+    first_name: string;
 
     @Prop({ required: false })
-    secondName: string;
+    second_name: string;
 
     @Prop({ required: true })
-    lastName: string;
+    last_name: string;
 
     @Prop({ required: true, maxlength: 8, minlength: 7 })
     dni: number;
@@ -61,6 +61,9 @@ export class Patient {
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Stories' })
     stories: Story[];
+
+    @Prop({type: URL})
+    profile_picture: string;
 
     @Prop({ default: false, select: false })
     isDeleted: boolean;

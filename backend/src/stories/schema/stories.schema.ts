@@ -25,7 +25,7 @@ export class Story {
     professional_id: Professional;
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'PlaceOfCare' })
-    placeOfCare: string;
+    placeOfCare_id: string;
 
     @Prop({ default: false, select: false })
     isDeleted: boolean;
