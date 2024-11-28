@@ -17,9 +17,15 @@ import { PlaceOfCareModule } from './place-of-care/place-of-care.module';
 import { HealthcareModule } from './healthcare/healthcare.module';
 import { MailsModule } from './mails/mails.module';
 import { ScheduleModule } from './schedule/schedule.module';
+import { AuthModule } from './auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig({ path: '.env' });
+
 
 @Module({
-  imports: [PatientModule, ProfessionalModule, AppointmentModule, StudiesModule, StoriesModule, TimeSlotModule, StateModule, CityModule, SpecialtyModule, PlaceOfCareModule, HealthcareModule, MailsModule, ScheduleModule],
+  imports: [MongooseModule.forRoot(process.env.ATLAS_URL),
+    PatientModule, ProfessionalModule, AppointmentModule, StudiesModule, StoriesModule, TimeSlotModule, StateModule, CityModule, SpecialtyModule, PlaceOfCareModule, HealthcareModule, MailsModule, ScheduleModule, AuthModule],
   controllers: [AppController, TimeSlotController],
   providers: [AppService, ProfessionalService, TimeSlotService],
 })

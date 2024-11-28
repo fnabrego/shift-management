@@ -31,7 +31,7 @@ export class Professional {
     @Prop({ required: true })
     dni: number;
 
-    @Prop({ required: true })
+    @Prop({ type: Date, required: true })
     birthdate: Date;
 
     @Prop({ required: true })
@@ -43,7 +43,7 @@ export class Professional {
     @Prop({ required: true })
     registration: string;
 
-    @Prop({ required: true })
+    @Prop({ type: Date, required: true })
     validity: Date;
 
     @Prop({ required: true, type: [mongoose.Schema.Types.ObjectId], ref: 'Specialty' })

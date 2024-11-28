@@ -7,7 +7,7 @@ import { Schedule } from '../../schedule/schema/schedule.schema';
 import { Status } from '../enum/status.enum';
 import { TimeSlot } from '../../time-slot/schema/time-slot.schema';
 
-export type AppointmentsDocument = HydratedDocument<Appointment>;
+export type AppointmentDocument = HydratedDocument<Appointment>;
 
 @Schema({ timestamps: true })
 export class Appointment {
@@ -15,7 +15,7 @@ export class Appointment {
     @Prop({ default: uuidv4 })
     _id: string;
 
-    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Patient' })
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'patient' })
     patient_id: Patient;
 
     @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Professional' })
@@ -24,7 +24,7 @@ export class Appointment {
     @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' })
     schedule_id: Schedule;
 
-    @Prop({ required: true })
+    @Prop({ type: Date, required: true })
     date: Date;
 
     @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'TimeSlot' })
@@ -35,9 +35,9 @@ export class Appointment {
 
 }
 
-export const AppointmentsSchemas = SchemaFactory.createForClass(Appointment);
+export const AppointmentSchema = SchemaFactory.createForClass(Appointment);
 
-AppointmentsSchemas.index(
+AppointmentSchema.index(
     { professional_id: 1, date: 1, time_slot: 1 },
     { unique: true, name: 'unique_appointment_per_time_slot' }
 )

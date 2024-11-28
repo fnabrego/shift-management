@@ -29,7 +29,7 @@ export class Patient {
     @Prop({ required: true, maxlength: 8, minlength: 7 })
     dni: number;
 
-    @Prop({ required: true })
+    @Prop({ type: Date, required: true })
     birthdate: Date;
 
     @Prop({ required: true })
@@ -70,4 +70,4 @@ export class Patient {
 
 }
 
-export const PatientSchema = SchemaFactory.createForClass(Patient);
+export const PatientSchemas = SchemaFactory.createForClass(Patient);

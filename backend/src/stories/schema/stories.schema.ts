@@ -12,7 +12,7 @@ export class Story {
     @Prop({ default: uuidv4 })
     _id: string;
 
-    @Prop({ required: true })
+    @Prop({ type: Date, required: true })
     date: Date;
 
     @Prop({ required: true })
