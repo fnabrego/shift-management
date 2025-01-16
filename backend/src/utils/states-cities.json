@@ -1,0 +1,140 @@
+  {
+    "Buenos Aires": [
+      "La Plata",
+      "Mar del Plata",
+      "Bahía Blanca",
+      "Tandil",
+      "San Nicolás"
+    ],
+    "Catamarca": [
+      "San Fernando del Valle de Catamarca",
+      "Belén",
+      "Tinogasta",
+      "Andalgalá"
+    ],
+    "Chaco": [
+      "Resistencia",
+      "Sáenz Peña",
+      "Villa Ángela",
+      "Charata"
+    ],
+    "Chubut": [
+      "Rawson",
+      "Trelew",
+      "Comodoro Rivadavia",
+      "Puerto Madryn"
+    ],
+    "Córdoba": [
+      "Córdoba",
+      "Villa Carlos Paz",
+      "Río Cuarto",
+      "Villa María"
+    ],
+    "Corrientes": [
+      "Corrientes",
+      "Goya",
+      "Paso de los Libres",
+      "Bella Vista"
+    ],
+    "Entre Ríos": [
+      "Paraná",
+      "Concordia",
+      "Gualeguaychú",
+      "Victoria"
+    ],
+    "Formosa": [
+      "Formosa",
+      "Clorinda",
+      "Pirané",
+      "Ingeniero Juárez"
+    ],
+    "Jujuy": [
+      "San Salvador de Jujuy",
+      "Perico",
+      "Palpalá",
+      "La Quiaca"
+    ],
+    "La Pampa": [
+      "Santa Rosa",
+      "General Pico",
+      "Toay",
+      "Eduardo Castex"
+    ],
+    "La Rioja": [
+      "La Rioja",
+      "Chilecito",
+      "Aimogasta",
+      "Chepes"
+    ],
+    "Mendoza": [
+      "Mendoza",
+      "San Rafael",
+      "Godoy Cruz",
+      "Maipú"
+    ],
+    "Misiones": [
+      "Posadas",
+      "Oberá",
+      "Eldorado",
+      "Puerto Iguazú"
+    ],
+    "Neuquén": [
+      "Neuquén",
+      "San Martín de los Andes",
+      "Zapala",
+      "Cutral Có"
+    ],
+    "Río Negro": [
+      "Viedma",
+      "Bariloche",
+      "Cipolletti",
+      "General Roca"
+    ],
+    "Salta": [
+      "Salta",
+      "Orán",
+      "Tartagal",
+      "Cafayate"
+    ],
+    "San Juan": [
+      "San Juan",
+      "Caucete",
+      "Rawson",
+      "Chimbas"
+    ],
+    "San Luis": [
+      "San Luis",
+      "Villa Mercedes",
+      "Merlo",
+      "La Punta"
+    ],
+    "Santa Cruz": [
+      "Río Gallegos",
+      "Caleta Olivia",
+      "El Calafate",
+      "Puerto Deseado"
+    ],
+    "Santa Fe": [
+      "Santa Fe",
+      "Rosario",
+      "Rafaela",
+      "Venado Tuerto"
+    ],
+    "Santiago del Estero": [
+      "Santiago del Estero",
+      "La Banda",
+      "Termas de Río Hondo",
+      "Añatuya"
+    ],
+    "Tierra del Fuego": [
+      "Ushuaia",
+      "Río Grande",
+      "Tolhuin"
+    ],
+    "Tucumán": [
+      "San Miguel de Tucumán",
+      "Tafí Viejo",
+      "Concepción",
+      "Yerba Buena"
+    ]
+  }

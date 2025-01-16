@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { InjectConnection, InjectModel } from '@nestjs/mongoose';
+import { Model, Schema } from 'mongoose';
 import { Professional } from './schema/professional.schema';
-import { Model } from 'mongoose';
 
 @Injectable()
 export class ProfessionalService {
     constructor(
-        @InjectModel(Professional.name) private professionalModel: Model<Professional>,
+        @InjectModel(Professional.name)  private professionalModel: Model <Professional>,
     ) { }
 
     async getProfessionals() {

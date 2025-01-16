@@ -1,44 +1,53 @@
-import { Controller, Delete, Get, HttpCode, Post, Put } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { PatientService } from './patient.service';
+import { CreatePatientDto, UpdatePatientDto } from './dto/patient.dto';
 
 @ApiTags('Patients')
-@Controller('patient')
+@Controller('patients')
 export class PatientController {
     constructor(private readonly patientService: PatientService) { }
-    
-    @HttpCode(201)
-    @Get()
+
+    @HttpCode(200)
+    @Get('all')
     @ApiOperation({ summary: 'Ver pacientes' })
-    getPatients() {
-        return this.patientService.getPatients();
+    @ApiParam({ name: 'page', required: false, type: String })
+    @ApiParam({ name: 'limit', required: false, type: String })
+    getPatients(@Param('page') page?: string, @Param('limit') limit?: string) {
+        if (!page || !limit) return this.patientService.getPatients();
+        const pageInt = Number(page);
+        const limitInt = Number(limit);
+        return this.patientService.getPatients(pageInt, limitInt);
     }
 
-    @HttpCode(201)
-    @Get()
+    @HttpCode(200)
+    @Get(':id')
     @ApiOperation({ summary: 'Ver un paciente' })
-    getPatient() {
-        return this.patientService.getPatientById();
+    getPatientById(@Param('id') id: string) {
+        return this.patientService.getPatientById(id);
     }
 
-    @HttpCode(201)
-    @Post()
+    /* @HttpCode(201)
+    @Post('add')
     @ApiOperation({ summary: 'Crear un paciente' })
-    createPatient() {
-        return this.patientService.createPatient();
-    }
+    createPatient(@Body() patient: CreatePatientDto) {
+        return this.patientService.createPatient(patient);
+    } */
 
-    @HttpCode(201)
-    @Put()
+    @HttpCode(200)
+    @Put(':id')
     @ApiOperation({ summary: 'Modificar un paciente' })
-    updatePatient() {
-        return this.patientService.updatePatientById();
+    updatePatient(
+        @Param('id') id: string,
+        @Body() patient: UpdatePatientDto
+    ) {
+        return this.patientService.updatePatientById(id, patient);
     }
 
-    @HttpCode(201)
-    @Delete()
+    @HttpCode(200)
+    @Delete(':id')
     @ApiOperation({ summary: 'Eliminar un paciente' })
-    deletetPatient() {
-        return this.patientService.deletePatientById();
+    deletetPatient(@Param('id') id: string) {
+        return this.patientService.deletePatientById(id);
     }
 }

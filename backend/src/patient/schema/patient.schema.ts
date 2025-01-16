@@ -8,6 +8,7 @@ import { Healthcare } from '../../healthcare/schema/healthcare.schema';
 import { Appointment } from '../../appointment/schema/appointment.schema';
 import { Role } from '../../roles/roles.enum';
 import { Story } from '../../stories/schema/stories.schema';
+import { UUID } from 'crypto';
 
 export type PatientDocument = HydratedDocument<Patient>;
 
@@ -15,7 +16,7 @@ export type PatientDocument = HydratedDocument<Patient>;
 export class Patient {
 
     @Prop({ default: uuidv4 })
-    _id: string;
+    _id: UUID;
 
     @Prop({ required: true })
     first_name: string;
@@ -29,23 +30,23 @@ export class Patient {
     @Prop({ required: true, maxlength: 8, minlength: 7 })
     dni: number;
 
-    @Prop({ type: Date, required: true })
+    @Prop({type: String, required: true })
     birthdate: Date;
 
     @Prop({ required: true })
-    mail: string;
+    email: string;
 
     @Prop({ required: true, select: false })
     password: string;
 
-    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'State' })
+    @Prop({ type: mongoose.Schema.Types.UUID, ref: 'State' })
     state: State;
 
-    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'City' })
-    city: City;
+    @Prop({ type: mongoose.Schema.Types.UUID, ref: 'City' })
+    city: State;
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Healthcare' })
-    healthcare: Healthcare;
+    healthcare: string;
 
     @Prop()
     num_joined: string;
@@ -54,13 +55,13 @@ export class Patient {
     plan: string;
 
     @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Appointment' })
-    appointments: Appointment[];
+    appointments: string[];
 
     @Prop({ required: true, enum: Role, default: 'patient' })
     role: Role;
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Stories' })
-    stories: Story[];
+    stories: string[];
 
     @Prop({type: URL})
     profile_picture: string;

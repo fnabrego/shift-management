@@ -6,7 +6,7 @@ dotenvConfig({ path: '.env' });
 
 @Injectable()
 export class MongooseConfigService {
-    public async onModuleInit() {
+    public async onModuleInit(): Promise<boolean> {
         const mongoUrl = process.env.ATLAS_URL;
         if (!mongoUrl) {
             throw new Error('ATLAS_URL not defined in env');
@@ -14,8 +14,10 @@ export class MongooseConfigService {
         try {
             await mongoose.connect(mongoUrl)
             console.log('Conexión a MongoDB exitosa')
+            return true;
         } catch (error) {
             console.log('Error al concetar a MongoDB', error)
         }
+
     }
 }

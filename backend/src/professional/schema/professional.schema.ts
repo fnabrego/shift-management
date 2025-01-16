@@ -1,4 +1,3 @@
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Date, HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,8 +7,8 @@ import { State } from '../../state/schema/state.schema';
 import { City } from '../../city/schema/city.schema';
 import { Healthcare } from '../../healthcare/schema/healthcare.schema';
 import { Appointment } from '../../appointment/schema/appointment.schema';
-import { Role } from '../../roles/roles.enum';
 import { Story } from '../../stories/schema/stories.schema';
+import { Role } from '../../roles/roles.enum';
 
 export type ProfessionalsDocument = HydratedDocument<Professional>;
 

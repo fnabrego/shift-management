@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, HttpCode, Post, Put } from '@nestjs/common';
-import { ProfessionalService } from './professional.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ProfessionalService } from './professional.service';
 
 @ApiTags('Professionals')
 @Controller('professional')

@@ -6,7 +6,7 @@ import { AppointmentService } from './appointment.service';
 @Controller('appointments')
 export class AppointmentController {
     constructor(private readonly appointmentService: AppointmentService) { }
-    
+
     @HttpCode(201)
     @Get()
     @ApiOperation({ summary: 'Ver turnos' })

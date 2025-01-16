@@ -4,8 +4,8 @@ import { ApiHideProperty, ApiProperty } from "@nestjs/swagger";
 
 export class CreateProfessionalDto {
 
-  @ApiHideProperty()
-  _id: string;
+ /*  @ApiHideProperty()
+  _id: string; */
 
   @ApiProperty({
     description: 'Localidad',
@@ -39,7 +39,7 @@ export class CreateProfessionalDto {
   @IsString()
   @MaxLength(8)
   @MinLength(7)
-  dni: string;
+  dni: number;
 
   @ApiProperty({
     description: 'Localidad',
@@ -55,7 +55,7 @@ export class CreateProfessionalDto {
   })
   @IsNotEmpty()
   @IsEmail()
-  mail: string;
+  email: string;
 
   @ApiProperty({
     description: 'Localidad',
