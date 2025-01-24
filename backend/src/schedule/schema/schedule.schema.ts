@@ -2,8 +2,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
-import { Professional } from '../../professional/schema/professional.schema';
 import { DayOfWeek } from '../../time-slot/enum/day_of_week.enum';
+import { Professional } from '../../user/schema/professional.schema';
 
 export type SchedulesDocument = HydratedDocument<Schedule>;
 

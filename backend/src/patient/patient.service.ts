@@ -1,13 +1,17 @@
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Patient } from './schema/patient.schema';
 import { Model } from 'mongoose';
-import { CreatePatientDto, UpdatePatientDto } from './dto/patient.dto';
+import { CreatePatientDto, UpdatePatientDto } from '../user/dto/patient.dto';
+import { User } from '../user/schema/user.schema';
+import { Patient } from '../user/schema/patient.schema';
+import { Professional } from '../user/schema/professional.schema';
 
 @Injectable()
 export class PatientService {
     constructor(
+        @InjectModel(User.name) private userModel: Model<User>,
         @InjectModel(Patient.name) private patientModel: Model<Patient>,
+        /* @InjectModel(Professional.name) private professionalModel: Model<Professional> */
     ) { }
 
     async getPatients(page?: number, limit?: number): Promise<Patient[]> {
@@ -33,7 +37,7 @@ export class PatientService {
     }
 
     async createPatient(patient: CreatePatientDto): Promise<Patient> {
-        const findPatient = await this.patientModel.findOne({where:patient.dni });
+        const findPatient = await this.patientModel.findOne({ where: patient.dni });
         console.log('buscando paciente: -> ' + findPatient)
         if (findPatient) throw new ConflictException(`Existing Patient DNI: ${patient.dni} `);
         //! Pendiente hashing de password

@@ -1,11 +1,8 @@
 import { Body, Controller, HttpCode, Post, UseInterceptors } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiTags } from '@nestjs/swagger';
-import { CreatePatientDto, LoginPatientDto } from '../patient/dto/patient.dto';
-import { CreateProfessionalDto } from '../professional/dto/professional.dto';
-//import { CreateUserDto, LogginUserDto } from 'src/users/user.dto';
-//import { DateAdderInterceptor } from 'src/interceptors/dateAdder.interceptor';
-//import { EmailInterceptor } from '../interceptors/emailLowercase.interceptor';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CreateUserDto, GoogleLoginUserDto, LoginUserDto } from '../user/dto/user.dto';
+import { EmailInterceptor } from '../interceptors/emailLowerCase.interceptor';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -15,15 +12,25 @@ export class AuthController {
 
     @HttpCode(201)
     @Post('signup')
-    newUser(@Body() patient: CreatePatientDto) {
-        delete patient.confirmPassword;
-        return this.authService.signUp(patient)
+    @UseInterceptors(EmailInterceptor)
+    @ApiOperation({ summary: 'Crear usuario' })
+    newUser(@Body() user: CreateUserDto) {
+        delete user.confirmPassword;
+        return this.authService.signUp(user)
     }
 
     @HttpCode(200)
     @Post('signin')
-    signIn(@Body() patient: LoginPatientDto) {
-        return this.authService.signIn(patient);
+    @ApiOperation({ summary: 'Iniciar sesion' })
+    signIn(@Body() credentials: LoginUserDto) {
+        return this.authService.signIn(credentials);
+    }
+
+    @HttpCode(200)
+    @Post('google/signin')
+    @ApiOperation({ summary: 'Registro/Login con Google' })
+    async googleSignIn(@Body() data: GoogleLoginUserDto) {
+        return this.authService.googleSignIn(data);
     }
 
 }

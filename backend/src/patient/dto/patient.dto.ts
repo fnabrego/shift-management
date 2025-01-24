@@ -1,15 +1,15 @@
-import { IsEmail, IsMongoId, IsNotEmpty, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
+/* import { IsEmail, IsMongoId, IsNotEmpty, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
 import { ApiHideProperty, ApiProperty, PickType } from "@nestjs/swagger";
 import { State } from "../../state/schema/state.schema";
 import { City } from "../../city/schema/city.schema";
 
 
-export class CreatePatientDto {
+export class CreatePatientDto { */
 
   /* @ApiHideProperty()
   _id: string; */
 
-  @ApiProperty({
+/*   @ApiProperty({
     description: 'Localidad',
     example: 'Springfield',
   })
@@ -143,3 +143,4 @@ export class LoginPatientDto extends PickType(
 export class UpdatePatientDto extends PickType(
   CreatePatientDto,
   ['first_name', 'second_name', 'last_name', 'birthdate', 'state', 'city', 'dni', 'healthcare', 'email', 'password', 'num_joined', 'plan', 'profile_picture']) { }
+ */

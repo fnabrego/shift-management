@@ -15,8 +15,8 @@ export class City {
     @Prop({ required: true })
     name: string;
 
-    @Prop({ required: true, type: mongoose.Schema.Types.String, ref: 'State' })
-    state: string;
+    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'State' })
+    state: State;
 
 }
 

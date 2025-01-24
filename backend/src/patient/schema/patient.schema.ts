@@ -1,4 +1,4 @@
-
+/* 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Date, HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
@@ -53,17 +53,17 @@ export class Patient {
 
     @Prop()
     plan: string;
+ */
+    /* @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Appointment' })
+    appointments: string[]; */
 
-    @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Appointment' })
-    appointments: string[];
+    /* @Prop({ required: true, enum: Role, default: 'patient' })
+    role: Role; */
 
-    @Prop({ required: true, enum: Role, default: 'patient' })
-    role: Role;
+    /* @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Stories' })
+    stories: string[]; */
 
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Stories' })
-    stories: string[];
-
-    @Prop({type: URL})
+    /* @Prop({type: URL})
     profile_picture: string;
 
     @Prop({ default: false, select: false })
@@ -71,4 +71,4 @@ export class Patient {
 
 }
 
-export const PatientSchemas = SchemaFactory.createForClass(Patient);
+export const PatientSchemas = SchemaFactory.createForClass(Patient); */

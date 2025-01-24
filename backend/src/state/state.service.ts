@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { State } from './schema/state.schema';
@@ -10,7 +10,9 @@ export class StateService {
     ) { }
 
     async getStates() {
-        return 'Todos los estados';
+        const states = await this.stateModel.find();
+        if (!states) throw new NotFoundException('No estan cargados los estados')
+        return states;
     }
     async getStateById() {
         return 'Estado por Id'

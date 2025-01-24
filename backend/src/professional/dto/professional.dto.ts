@@ -1,13 +1,13 @@
-import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
+/* import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
 import { ApiHideProperty, ApiProperty } from "@nestjs/swagger";
 
 
 export class CreateProfessionalDto {
-
+ */
  /*  @ApiHideProperty()
   _id: string; */
 
-  @ApiProperty({
+  /* @ApiProperty({
     description: 'Localidad',
     example: 'Springfield',
   })
@@ -159,4 +159,4 @@ export class CreateProfessionalDto {
   @ApiHideProperty()
   isDeleted: boolean;
 
-}
+} */

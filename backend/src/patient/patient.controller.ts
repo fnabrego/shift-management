@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { PatientService } from './patient.service';
-import { CreatePatientDto, UpdatePatientDto } from './dto/patient.dto';
+import { CreatePatientDto, UpdatePatientDto } from '../user/dto/patient.dto';
 
 @ApiTags('Patients')
 @Controller('patients')

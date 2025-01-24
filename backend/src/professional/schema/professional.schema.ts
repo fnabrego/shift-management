@@ -1,4 +1,4 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+/* import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Date, HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import { Specialty } from '../../specialty/schema/specialty.schema';
@@ -55,18 +55,18 @@ export class Professional {
     state: State;
 
     @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'City' })
-    city: City;
+    city: City; */
 
-    @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Healthcare' })
-    healthcare: Healthcare[];
+    /* @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Healthcare' })
+    healthcare: Healthcare[]; */
 
-    @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Appointment' })
-    appointments: Appointment[];
+    /* @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Appointment' })
+    appointments: Appointment[]; */
 
-    @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Story' })
-    stories: Story[];
+    /* @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Story' })
+    stories: Story[]; */
 
-    @Prop()
+    /* @Prop()
     profile_picture: string;
 
     @Prop({ required: true, enum: Role, default: 'professional' })
@@ -77,4 +77,4 @@ export class Professional {
 
 }
 
-export const ProfessionalsSchema = SchemaFactory.createForClass(Professional);
+export const ProfessionalsSchema = SchemaFactory.createForClass(Professional); */
